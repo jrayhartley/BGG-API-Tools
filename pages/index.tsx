@@ -53,26 +53,18 @@ export default function Home() {
     console.log("game: ", game)
     return (
       <div
-        style={{
-          width: 'calc( 33.33% - 1rem )',
-          margin: '0.5rem'
-        }}
+        className={styles.game}
       >
         <a 
           href={`https://boardgamegeek.com/boardgame/${game.$.id}`} 
           target="_blank" 
           rel="noreferrer"
         >
-          <div style={{
-              display: 'flex',
-            }}
+          <div 
+            className={styles.gameWrap}
           >
             <div>
-              <Image 
-                style={{ 
-                  width: '100%', 
-                  height: 'auto' 
-                }} 
+              <Image  
                 src={game.thumbnail[0]} 
                 alt={game.name[0].$.value} 
                 width='100' 
@@ -80,15 +72,9 @@ export default function Home() {
               />
             </div>
             <div
-              style={{
-                margin: '0.5rem 1rem'
-              }}
+              className={styles.gameContent}
             >
-              <h3
-               style={{
-                margin: '0 0 0.5rem'
-               }}
-              >
+              <h3>
                 {game.name[0].$.value}
               </h3>
               <h5>Complexity: {game.statistics[0].ratings[0].averageweight[0].$.value}</h5>
@@ -111,10 +97,7 @@ export default function Home() {
       })
       return (
         <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap'
-          }}
+          className={styles.hotGames}
         >          
           {sortedGames.map((game: any, i: any) => {
             return <Game key={i} game={game} />
