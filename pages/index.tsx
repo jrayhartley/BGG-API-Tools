@@ -7,12 +7,15 @@ import { useEffect, useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
+
+
+
 export default function Home() {
 
   const [games, setGames] = useState()
 
   useEffect(() => {
-    fetch('https://api.geekdo.com/xmlapi2/hot?type=boardgame&stats=1')
+    fetch('https://api.geekdo.com/xmlapi2/hot?type=boardgame&stats=1', { next: { revalidate: 60 } })
     .then(response => response.text())
     .then((data) => {
       //console.log('BGG API XML: ', data)
